@@ -21,11 +21,19 @@
 #endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 enum charybdis_keymap_layers {
-    LAYER_BASE = 0,
-    LAYER_LOWER,
-    LAYER_RAISE,
-    LAYER_POINTER,
+    LAYER_MIRYOKU = 0,
+    LAYER_MIR_SYM,
+    LAYER_MIR_NAV,
+    LAYER_MIR_NUM,
+    LAYER_MIR_MOUSE,
+    
+    // Media controls on nav layer outer columns
+    //LAYER_MIR_MEDIA,
+    // Function keys on nav layer top row
+    LAYER_MIR_FN,
+    //LAYER_POINTER = LAYER_MIR_MOUSE,
 };
+#define LAYER_POINTER LAYER_MIR_MOUSE
 
 /** \brief Automatically enable sniping-mode on the pointer layer. */
 //#define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
@@ -54,6 +62,22 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define ALT_APP LALT_T(KC_APP)
 #define CTL_ESC LCTL_T(KC_ESC)
 
+#define LGUI_A LGUI_T(KC_A)
+#define LALT_S LALT_T(KC_S)
+#define LCTL_D LCTL_T(KC_D)
+#define LSFT_F LSFT_T(KC_F)
+
+#define LGUI_SCN LGUI_T(KC_SCLN)
+#define LALT_L LALT_T(KC_L)
+#define LCTL_K LCTL_T(KC_K)
+#define LSFT_J LSFT_T(KC_J)
+
+#define NAV_BS LT(LAYER_MIR_NAV, KC_BSPC)
+#define MOU_TAB LT(LAYER_MIR_MOUSE, KC_TAB)
+#define NUM_SPC LT(LAYER_MIR_NUM, KC_SPC)
+#define SYM_ENT LT(LAYER_MIR_SYM, KC_ENT)
+#define FUN_DEL LT(LAYER_MIR_FN, KC_DEL)
+
 enum userspace_keycodes {
 #ifndef NO_CHARYBDIS_KEYCODES
   PNTR_OFF = CHARYBDIS_SAFE_RANGE,
@@ -66,65 +90,97 @@ enum userspace_keycodes {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [LAYER_BASE] = LAYOUT_charybdis_4x6(
+  [LAYER_MIRYOKU] = LAYOUT_charybdis_4x6(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_EQL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
         KC_LBRC,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LGUI,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+       KC_LGUI,    LGUI_A,  LALT_S,  LCTL_D,  LSFT_F,  KC_G,       KC_H,    LSFT_J,  LCTL_K,  LALT_L,  LGUI_SCN, KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                   KC_BSPC, KC_TAB,  ALT_APP,     KC_ENT,  KC_SPC,
-                                            RAISE,   CTL_ESC,     LOWER
+                                  NAV_BS,  KC_TAB,  ALT_APP,    SYM_ENT, NUM_SPC,
+                                           KC_ESC,  CTL_ESC,    FUN_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
-  [LAYER_LOWER] = LAYOUT_charybdis_4x6(
+  [LAYER_MIR_SYM] = LAYOUT_charybdis_4x6(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
+       _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______,  _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, KC_LBRC,   KC_P7, KC_P8,    KC_P9,  KC_RBRC,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       _______, KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,    _______, _______, _______, _______, _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, KC_PPLS,   KC_P4, KC_P5,    KC_P6,  KC_EQL,     XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX,
+       _______, KC_DQUO, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS,    _______, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, KC_PAST,   KC_P1, KC_P2,    KC_P3,  KC_PSLS,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       _______, KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE,    _______, _______, _______, _______, _______, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_PDOT,  KC_P0,  _______,    _______, _______,
-                                            KC_PMNS,_______,    _______
+                                  KC_LPRN, KC_UNDS, _______,    _______, _______,
+                                           KC_RPRN, _______,    _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
-  [LAYER_RAISE] = LAYOUT_charybdis_4x6(
+
+  [LAYER_MIR_NAV] = LAYOUT_charybdis_4x6(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_F12,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_INS, KC_HOME,   KC_UP,   KC_END,   KC_PGUP, KC_VOLU,
+       KC_MNXT, _______, _______, _______, _______, _______,    KC_INS, KC_HOME,   KC_UP,   KC_END,   KC_PGUP, KC_VOLU,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_MPLY, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_CAPS, KC_LEFT,   KC_DOWN, KC_RIGHT, KC_PGDN, KC_MUTE,
+       KC_MPLY, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,    KC_CAPS, KC_LEFT,   KC_DOWN, KC_RIGHT, KC_PGDN, KC_MUTE,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_MPRV, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    REDO,    PASTE,     COPY,    CUT,      UNDO,    KC_VOLD,
+       KC_MPRV, _______, _______, _______, _______, _______,    REDO,    PASTE,     COPY,    CUT,      UNDO,    KC_VOLD,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    _______, _______,
-                                           _______, _______,    _______
+                                  _______, _______, _______,    KC_ENT, KC_SPC,
+                                           _______, _______,    KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
-  [LAYER_POINTER] = LAYOUT_charybdis_4x6(
+  [LAYER_MIR_NUM] = LAYOUT_charybdis_4x6(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       PNTR_OFF,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  EEP_RST, RESET,
+       KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DPI_MOD, S_D_MOD,    S_D_MOD, DPI_MOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       _______, KC_LBRC,   KC_P7, KC_P8,    KC_P9,  KC_RBRC,    _______, _______, _______, _______, _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    SNP_TOG, DRG_TOG, LGUI(KC_TAB), XXXXXXX, XXXXXXX, XXXXXXX,
+       _______, KC_PPLS,   KC_P4, KC_P5,    KC_P6,  KC_EQL,     _______, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    REDO,    PASTE,     COPY,    CUT,      UNDO, XXXXXXX,
+       _______, KC_GRV,    KC_P1, KC_P2,    KC_P3,  KC_PSLS,    _______, _______, _______, _______, _______, _______,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  KC_P0,  KC_PMNS,  _______,    _______, _______,
+                                          KC_PDOT, _______,    _______
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+
+  [LAYER_MIR_MOUSE] = LAYOUT_charybdis_4x6(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       PNTR_OFF,_______, _______, _______, _______, _______,    _______, _______, _______, _______,  EEP_RST, RESET,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, _______, _______, _______, _______, _______,    S_D_MOD, DPI_MOD, _______, _______, _______, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,    SNP_TOG, DRG_TOG, LGUI(KC_TAB), _______, _______, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, _______, _______, _______, _______, _______,    REDO,    PASTE,     COPY,    CUT,      UNDO, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BTN1, KC_BTN2, KC_BTN5,    PNTR_OFF, PNTR_OFF,
                                            KC_BTN3, KC_BTN4,    PNTR_OFF
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
+
+   [LAYER_MIR_FN] = LAYOUT_charybdis_4x6(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, KC_F12,    KC_F7,   KC_F8,   KC_F9,  KC_PSCR,   _______, _______, _______, _______, _______, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, KC_F11,    KC_F4,   KC_F5,   KC_F6,  KC_SCRL,   _______, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, KC_F10,    KC_F1,   KC_F2,   KC_F3,  KC_PAUS,   _______, _______, _______, _______, _______, _______,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  KC_BSPC, KC_TAB,  _______,    _______, _______,
+                                           KC_APP,  _______,    _______
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+
 };
 // clang-format on
 
@@ -190,7 +246,7 @@ void shutdown_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode)
     {
-    case POINTER_OFF:
+    case PNTR_OFF:
       if (record->event.pressed) {
            layer_off(LAYER_POINTER);
 #    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
