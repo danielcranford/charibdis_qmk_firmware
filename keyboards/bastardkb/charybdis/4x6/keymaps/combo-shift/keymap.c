@@ -232,7 +232,7 @@ enum combo_events {
      FP,
      
      FH,
-     //FJ,
+     FJ,
      FK,
      FL,
      FSCN,
@@ -260,7 +260,7 @@ enum combo_events {
      JA,
      JS,
      JD,
-     //JF,
+     JF,
      JG,
 
      JZ,
@@ -274,56 +274,104 @@ enum combo_events {
 
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM f_6[] = {LSFT_F, KC_6, COMBO_END};
-const uint16_t PROGMEM f_7[] = {LSFT_F, KC_7, COMBO_END};
-const uint16_t PROGMEM f_8[] = {LSFT_F, KC_8, COMBO_END};
-const uint16_t PROGMEM f_9[] = {LSFT_F, KC_9, COMBO_END};
-const uint16_t PROGMEM f_0[] = {LSFT_F, KC_0, COMBO_END};
+// const uint16_t PROGMEM f_6[] = {LSFT_F, KC_6, COMBO_END};
+// const uint16_t PROGMEM f_7[] = {LSFT_F, KC_7, COMBO_END};
+// const uint16_t PROGMEM f_8[] = {LSFT_F, KC_8, COMBO_END};
+// const uint16_t PROGMEM f_9[] = {LSFT_F, KC_9, COMBO_END};
+// const uint16_t PROGMEM f_0[] = {LSFT_F, KC_0, COMBO_END};
 
 
-const uint16_t PROGMEM fy[] = {LSFT_F, KC_Y, COMBO_END};
-const uint16_t PROGMEM fu[] = {LSFT_F, KC_U, COMBO_END};
-const uint16_t PROGMEM fi[] = {LSFT_F, KC_I, COMBO_END};
-const uint16_t PROGMEM fo[] = {LSFT_F, KC_O, COMBO_END};
-const uint16_t PROGMEM fp[] = {LSFT_F, KC_P, COMBO_END};
+// const uint16_t PROGMEM fy[] = {LSFT_F, KC_Y, COMBO_END};
+// const uint16_t PROGMEM fu[] = {LSFT_F, KC_U, COMBO_END};
+// const uint16_t PROGMEM fi[] = {LSFT_F, KC_I, COMBO_END};
+// const uint16_t PROGMEM fo[] = {LSFT_F, KC_O, COMBO_END};
+// const uint16_t PROGMEM fp[] = {LSFT_F, KC_P, COMBO_END};
 
-const uint16_t PROGMEM fh[] = {LSFT_F, KC_H, COMBO_END};
-//const uint16_t PROGMEM fj[] = {LSFT_F, LSFT_J, COMBO_END};
-const uint16_t PROGMEM fk[] = {LSFT_F, LCTL_K, COMBO_END};
-const uint16_t PROGMEM fl[] = {LSFT_F, LALT_L, COMBO_END};
-const uint16_t PROGMEM fscn[] = {LSFT_F, LGUI_SCN, COMBO_END};
+// const uint16_t PROGMEM fh[] = {LSFT_F, KC_H, COMBO_END};
+// //const uint16_t PROGMEM fj[] = {LSFT_F, LSFT_J, COMBO_END};
+// const uint16_t PROGMEM fk[] = {LSFT_F, LCTL_K, COMBO_END};
+// const uint16_t PROGMEM fl[] = {LSFT_F, LALT_L, COMBO_END};
+// const uint16_t PROGMEM fscn[] = {LSFT_F, LGUI_SCN, COMBO_END};
 
-const uint16_t PROGMEM fn[] = {LSFT_F, KC_N, COMBO_END};
-const uint16_t PROGMEM fm[] = {LSFT_F, KC_M, COMBO_END};
-const uint16_t PROGMEM fcomm[] = {LSFT_F, KC_COMM, COMBO_END};
-const uint16_t PROGMEM fdot[] = {LSFT_F, KC_DOT, COMBO_END};
-const uint16_t PROGMEM fslsh[] = {LSFT_F, KC_SLSH, COMBO_END};
+// const uint16_t PROGMEM fn[] = {LSFT_F, KC_N, COMBO_END};
+// const uint16_t PROGMEM fm[] = {LSFT_F, KC_M, COMBO_END};
+// const uint16_t PROGMEM fcomm[] = {LSFT_F, KC_COMM, COMBO_END};
+// const uint16_t PROGMEM fdot[] = {LSFT_F, KC_DOT, COMBO_END};
+// const uint16_t PROGMEM fslsh[] = {LSFT_F, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM f_6[] = {NAV_BS, KC_6, COMBO_END};
+const uint16_t PROGMEM f_7[] = {NAV_BS, KC_7, COMBO_END};
+const uint16_t PROGMEM f_8[] = {NAV_BS, KC_8, COMBO_END};
+const uint16_t PROGMEM f_9[] = {NAV_BS, KC_9, COMBO_END};
+const uint16_t PROGMEM f_0[] = {NAV_BS, KC_0, COMBO_END};
+
+
+const uint16_t PROGMEM fy[] = {NAV_BS, KC_Y, COMBO_END};
+const uint16_t PROGMEM fu[] = {NAV_BS, KC_U, COMBO_END};
+const uint16_t PROGMEM fi[] = {NAV_BS, KC_I, COMBO_END};
+const uint16_t PROGMEM fo[] = {NAV_BS, KC_O, COMBO_END};
+const uint16_t PROGMEM fp[] = {NAV_BS, KC_P, COMBO_END};
+
+const uint16_t PROGMEM fh[] = {NAV_BS, KC_H, COMBO_END};
+const uint16_t PROGMEM fj[] = {NAV_BS, LSFT_J, COMBO_END};
+const uint16_t PROGMEM fk[] = {NAV_BS, LCTL_K, COMBO_END};
+const uint16_t PROGMEM fl[] = {NAV_BS, LALT_L, COMBO_END};
+const uint16_t PROGMEM fscn[] = {NAV_BS, LGUI_SCN, COMBO_END};
+
+const uint16_t PROGMEM fn[] = {NAV_BS, KC_N, COMBO_END};
+const uint16_t PROGMEM fm[] = {NAV_BS, KC_M, COMBO_END};
+const uint16_t PROGMEM fcomm[] = {NAV_BS, KC_COMM, COMBO_END};
+const uint16_t PROGMEM fdot[] = {NAV_BS, KC_DOT, COMBO_END};
+const uint16_t PROGMEM fslsh[] = {NAV_BS, KC_SLSH, COMBO_END};
 
 
 
-const uint16_t PROGMEM j_1[] = {LSFT_J, KC_1, COMBO_END};
-const uint16_t PROGMEM j_2[] = {LSFT_J, KC_2, COMBO_END};
-const uint16_t PROGMEM j_3[] = {LSFT_J, KC_3, COMBO_END};
-const uint16_t PROGMEM j_4[] = {LSFT_J, KC_4, COMBO_END};
-const uint16_t PROGMEM j_5[] = {LSFT_J, KC_5, COMBO_END};
+// const uint16_t PROGMEM j_1[] = {LSFT_J, KC_1, COMBO_END};
+// const uint16_t PROGMEM j_2[] = {LSFT_J, KC_2, COMBO_END};
+// const uint16_t PROGMEM j_3[] = {LSFT_J, KC_3, COMBO_END};
+// const uint16_t PROGMEM j_4[] = {LSFT_J, KC_4, COMBO_END};
+// const uint16_t PROGMEM j_5[] = {LSFT_J, KC_5, COMBO_END};
 
-const uint16_t PROGMEM jq[] = {LSFT_J, KC_Q, COMBO_END};
-const uint16_t PROGMEM jw[] = {LSFT_J, KC_W, COMBO_END};
-const uint16_t PROGMEM je[] = {LSFT_J, KC_E, COMBO_END};
-const uint16_t PROGMEM jr[] = {LSFT_J, KC_R, COMBO_END};
-const uint16_t PROGMEM jt[] = {LSFT_J, KC_T, COMBO_END};
+// const uint16_t PROGMEM jq[] = {LSFT_J, KC_Q, COMBO_END};
+// const uint16_t PROGMEM jw[] = {LSFT_J, KC_W, COMBO_END};
+// const uint16_t PROGMEM je[] = {LSFT_J, KC_E, COMBO_END};
+// const uint16_t PROGMEM jr[] = {LSFT_J, KC_R, COMBO_END};
+// const uint16_t PROGMEM jt[] = {LSFT_J, KC_T, COMBO_END};
 
-const uint16_t PROGMEM ja[] = {LSFT_J, LGUI_A, COMBO_END};
-const uint16_t PROGMEM js[] = {LSFT_J, LALT_S, COMBO_END};
-const uint16_t PROGMEM jd[] = {LSFT_J, LCTL_D, COMBO_END};
-//const uint16_t PROGMEM jf[] = {LSFT_J, LSFT_F, COMBO_END};
-const uint16_t PROGMEM jg[] = {LSFT_J, KC_G, COMBO_END};
+// const uint16_t PROGMEM ja[] = {LSFT_J, LGUI_A, COMBO_END};
+// const uint16_t PROGMEM js[] = {LSFT_J, LALT_S, COMBO_END};
+// const uint16_t PROGMEM jd[] = {LSFT_J, LCTL_D, COMBO_END};
+// //const uint16_t PROGMEM jf[] = {LSFT_J, LSFT_F, COMBO_END};
+// const uint16_t PROGMEM jg[] = {LSFT_J, KC_G, COMBO_END};
 
-const uint16_t PROGMEM jz[] = {LSFT_J, KC_Z, COMBO_END};
-const uint16_t PROGMEM jx[] = {LSFT_J, KC_X, COMBO_END};
-const uint16_t PROGMEM jc[] = {LSFT_J, KC_C, COMBO_END};
-const uint16_t PROGMEM jv[] = {LSFT_J, KC_V, COMBO_END};
-const uint16_t PROGMEM jb[] = {LSFT_J, KC_B, COMBO_END};
+// const uint16_t PROGMEM jz[] = {LSFT_J, KC_Z, COMBO_END};
+// const uint16_t PROGMEM jx[] = {LSFT_J, KC_X, COMBO_END};
+// const uint16_t PROGMEM jc[] = {LSFT_J, KC_C, COMBO_END};
+// const uint16_t PROGMEM jv[] = {LSFT_J, KC_V, COMBO_END};
+// const uint16_t PROGMEM jb[] = {LSFT_J, KC_B, COMBO_END};
+const uint16_t PROGMEM j_1[] = {NUM_SPC, KC_1, COMBO_END};
+const uint16_t PROGMEM j_2[] = {NUM_SPC, KC_2, COMBO_END};
+const uint16_t PROGMEM j_3[] = {NUM_SPC, KC_3, COMBO_END};
+const uint16_t PROGMEM j_4[] = {NUM_SPC, KC_4, COMBO_END};
+const uint16_t PROGMEM j_5[] = {NUM_SPC, KC_5, COMBO_END};
+
+const uint16_t PROGMEM jq[] = {NUM_SPC, KC_Q, COMBO_END};
+const uint16_t PROGMEM jw[] = {NUM_SPC, KC_W, COMBO_END};
+const uint16_t PROGMEM je[] = {NUM_SPC, KC_E, COMBO_END};
+const uint16_t PROGMEM jr[] = {NUM_SPC, KC_R, COMBO_END};
+const uint16_t PROGMEM jt[] = {NUM_SPC, KC_T, COMBO_END};
+
+const uint16_t PROGMEM ja[] = {NUM_SPC, LGUI_A, COMBO_END};
+const uint16_t PROGMEM js[] = {NUM_SPC, LALT_S, COMBO_END};
+const uint16_t PROGMEM jd[] = {NUM_SPC, LCTL_D, COMBO_END};
+const uint16_t PROGMEM jf[] = {NUM_SPC, LSFT_F, COMBO_END};
+const uint16_t PROGMEM jg[] = {NUM_SPC, KC_G, COMBO_END};
+
+const uint16_t PROGMEM jz[] = {NUM_SPC, KC_Z, COMBO_END};
+const uint16_t PROGMEM jx[] = {NUM_SPC, KC_X, COMBO_END};
+const uint16_t PROGMEM jc[] = {NUM_SPC, KC_C, COMBO_END};
+const uint16_t PROGMEM jv[] = {NUM_SPC, KC_V, COMBO_END};
+const uint16_t PROGMEM jb[] = {NUM_SPC, KC_B, COMBO_END};
+
 
 combo_t key_combos[] = {
      [F_6] = COMBO(f_6, LSFT(KC_6)),
@@ -339,7 +387,7 @@ combo_t key_combos[] = {
      [FP] = COMBO(fp, LSFT(KC_P)),
 
      [FH]   = COMBO(fh, LSFT(KC_H)),
-//   [FJ]   = COMBO(fj, LSFT(KC_J)),
+     [FJ]   = COMBO(fj, LSFT(KC_J)),
      [FK]   = COMBO(fk, LSFT(KC_K)),
      [FL]   = COMBO(fl, LSFT(KC_L)),
      [FSCN] = COMBO(fscn, LSFT(KC_SCLN)),
@@ -366,7 +414,7 @@ combo_t key_combos[] = {
      [JA] = COMBO(ja, LSFT(KC_A)),
      [JS] = COMBO(js, LSFT(KC_S)),
      [JD] = COMBO(jd, LSFT(KC_D)),
-//   [JF] = COMBO(jf, LSFT(KC_F)),
+     [JF] = COMBO(jf, LSFT(KC_F)),
      [JG] = COMBO(jg, LSFT(KC_G)),
 
      [JZ] = COMBO(jz, LSFT(KC_Z)),
