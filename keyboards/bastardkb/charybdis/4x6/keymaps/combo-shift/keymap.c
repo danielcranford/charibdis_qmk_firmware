@@ -21,7 +21,9 @@
 #endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 enum charybdis_keymap_layers {
-    LAYER_MIRYOKU = 0,
+    LAYER_VANILLA = 0,
+    LAYER_MIRYOKU,
+    LAYER_COMBO,
     LAYER_THE,
     LAYER_THE_SFT,
     LAYER_MIR_SYM,
@@ -94,13 +96,43 @@ enum userspace_keycodes {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  [LAYER_VANILLA] = LAYOUT_charybdis_4x6(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       KC_EQL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       TO(LAYER_MIRYOKU),   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       KC_LGUI,    KC_A,  KC_S,  KC_D,  KC_F,  KC_G,       KC_H,    KC_J,  KC_K,  KC_L,  KC_SCLN, KC_QUOT,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  NAV_BS,  KC_TAB,  ALT_APP,    SYM_ENT, NUM_SPC,
+                                           KC_ESC,  CTL_ESC,    FUN_DEL
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+
   [LAYER_MIRYOKU] = LAYOUT_charybdis_4x6(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_EQL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
+       KC_EQL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-        TG(LAYER_THE),   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
+       TO(LAYER_COMBO),   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LGUI,    LGUI_A,  LALT_S,  LCTL_D,  LSFT_F,  KC_G,       KC_H,    LSFT_J,  LCTL_K,  LALT_L,  LGUI_SCN, KC_QUOT,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  NAV_BS,  KC_TAB,  ALT_APP,    SYM_ENT, NUM_SPC,
+                                           KC_ESC,  CTL_ESC,    FUN_DEL
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+
+  [LAYER_COMBO] = LAYOUT_charybdis_4x6(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       KC_EQL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       TO(LAYER_THE),   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       KC_LGUI,    KC_A,  KC_S,  KC_D,  KC_F,  KC_G,       KC_H,    KC_J,  KC_K,  KC_L,  KC_SCLN, KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
@@ -113,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______,   KC_K,    KC_M,    KC_L,    KC_U,  KC_QUES,      KC_V,    KC_D,    KC_R,    KC_QUOT, KC_Q,  _______,
+       TO(LAYER_VANILLA),   KC_K,    KC_M,    KC_L,    KC_U,  KC_QUES,      KC_V,    KC_D,    KC_R,    KC_QUOT, KC_Q,  _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______,   KC_A,    KC_T,    KC_H,    KC_E,  KC_DOT,       KC_C,    KC_S,    KC_N,    KC_O,    KC_I,  _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
@@ -126,9 +158,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_THE_SFT] = LAYOUT_charybdis_4x6(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-     S(KC_EQL), S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),    S(KC_6), S(KC_7), S(KC_8), S(KC_9),    S(KC_0), S(KC_MINS),
+       S(KC_EQL), S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),    S(KC_6), S(KC_7), S(KC_8), S(KC_9),    S(KC_0), S(KC_MINS),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, S(KC_K), S(KC_M), S(KC_L), S(KC_U), KC_EXLM,    S(KC_V), S(KC_D), S(KC_R), S(KC_QUOT), S(KC_Q),  _______,
+       _______, S(KC_K), S(KC_M), S(KC_L), S(KC_U), KC_EXLM,    S(KC_V), S(KC_D), S(KC_R), S(KC_QUOT), S(KC_Q),  S(KC_BSLS),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, S(KC_A), S(KC_T), S(KC_H), S(KC_E), KC_COLN,    S(KC_C), S(KC_S), S(KC_N), S(KC_O),    S(KC_I),  _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
@@ -269,6 +301,8 @@ enum combo_events {
      JV,
      JB,
 
+     W1,
+
      COMBO_LENGTH,
 };
 
@@ -312,10 +346,10 @@ const uint16_t PROGMEM fo[] = {NAV_BS, KC_O, COMBO_END};
 const uint16_t PROGMEM fp[] = {NAV_BS, KC_P, COMBO_END};
 
 const uint16_t PROGMEM fh[] = {NAV_BS, KC_H, COMBO_END};
-const uint16_t PROGMEM fj[] = {NAV_BS, LSFT_J, COMBO_END};
-const uint16_t PROGMEM fk[] = {NAV_BS, LCTL_K, COMBO_END};
-const uint16_t PROGMEM fl[] = {NAV_BS, LALT_L, COMBO_END};
-const uint16_t PROGMEM fscn[] = {NAV_BS, LGUI_SCN, COMBO_END};
+const uint16_t PROGMEM fj[] = {NAV_BS, KC_J, COMBO_END};
+const uint16_t PROGMEM fk[] = {NAV_BS, KC_K, COMBO_END};
+const uint16_t PROGMEM fl[] = {NAV_BS, KC_L, COMBO_END};
+const uint16_t PROGMEM fscn[] = {NAV_BS, KC_SCLN, COMBO_END};
 
 const uint16_t PROGMEM fn[] = {NAV_BS, KC_N, COMBO_END};
 const uint16_t PROGMEM fm[] = {NAV_BS, KC_M, COMBO_END};
@@ -360,10 +394,10 @@ const uint16_t PROGMEM je[] = {NUM_SPC, KC_E, COMBO_END};
 const uint16_t PROGMEM jr[] = {NUM_SPC, KC_R, COMBO_END};
 const uint16_t PROGMEM jt[] = {NUM_SPC, KC_T, COMBO_END};
 
-const uint16_t PROGMEM ja[] = {NUM_SPC, LGUI_A, COMBO_END};
-const uint16_t PROGMEM js[] = {NUM_SPC, LALT_S, COMBO_END};
-const uint16_t PROGMEM jd[] = {NUM_SPC, LCTL_D, COMBO_END};
-const uint16_t PROGMEM jf[] = {NUM_SPC, LSFT_F, COMBO_END};
+const uint16_t PROGMEM ja[] = {NUM_SPC, KC_A, COMBO_END};
+const uint16_t PROGMEM js[] = {NUM_SPC, KC_S, COMBO_END};
+const uint16_t PROGMEM jd[] = {NUM_SPC, KC_D, COMBO_END};
+const uint16_t PROGMEM jf[] = {NUM_SPC, KC_F, COMBO_END};
 const uint16_t PROGMEM jg[] = {NUM_SPC, KC_G, COMBO_END};
 
 const uint16_t PROGMEM jz[] = {NUM_SPC, KC_Z, COMBO_END};
@@ -372,6 +406,7 @@ const uint16_t PROGMEM jc[] = {NUM_SPC, KC_C, COMBO_END};
 const uint16_t PROGMEM jv[] = {NUM_SPC, KC_V, COMBO_END};
 const uint16_t PROGMEM jb[] = {NUM_SPC, KC_B, COMBO_END};
 
+const uint16_t PROGMEM w1[] = {NUM_SPC, NAV_BS, COMBO_END};
 
 combo_t key_combos[] = {
      [F_6] = COMBO(f_6, LSFT(KC_6)),
@@ -423,6 +458,7 @@ combo_t key_combos[] = {
      [JV] = COMBO(jv, LSFT(KC_V)),
      [JB] = COMBO(jb, LSFT(KC_B)),
 
+     [W1] = COMBO(w1, LSFT(KC_B)),
 };
 
 #ifdef POINTING_DEVICE_ENABLE
@@ -498,4 +534,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     }
     // continue processing key
     return true;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+    case LAYER_COMBO:
+        combo_enable();
+        break;
+    default: //  for any other layers, or the default layer
+        combo_disable();
+        break;
+    }
+    return state;
 }

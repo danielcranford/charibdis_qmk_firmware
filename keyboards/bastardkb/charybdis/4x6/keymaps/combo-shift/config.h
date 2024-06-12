@@ -78,3 +78,6 @@
 
 // Mimic macos "natural" scroll direction
 #define CHARYBDIS_DRAGSCROLL_REVERSE_Y
+
+// Self explanatory
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
