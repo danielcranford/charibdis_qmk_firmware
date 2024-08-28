@@ -81,3 +81,7 @@
 
 // Self explanatory
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+
+// Combo definitions are based on layer 0 keys
+#define COMBO_ONLY_FROM_LAYER 0
